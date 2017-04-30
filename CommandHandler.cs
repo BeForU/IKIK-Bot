@@ -1,9 +1,6 @@
 ﻿using Discord.Commands;
 using Discord.WebSocket;
-using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DiscordBot.NET_Core
@@ -30,16 +27,16 @@ namespace DiscordBot.NET_Core
             // Don't handle the command if it is a system message
             var message = parameterMessage as SocketUserMessage;
             if (message == null) return;
-			if (message.Content.Length <= 1) return;
-			else if (string.IsNullOrWhiteSpace(message.Content.Substring(1, 1))) return;
+            if (message.Content.Length <= 1) return;
+            else if (string.IsNullOrWhiteSpace(message.Content.Substring(1, 1))) return;
 
-			// Mark where the prefix ends and the command begins
-			int argPos = 0;
-            // Determine if the message has a valid prefix, adjust argPos 
+            // Mark where the prefix ends and the command begins
+            int argPos = 0;
+            // Determine if the message has a valid prefix, adjust argPos
             if (!(message.HasMentionPrefix(client.CurrentUser, ref argPos) || message.HasCharPrefix('!', ref argPos))) return;
 
-			// Create a Command Context
-			var context = new CommandContext(client, message);
+            // Create a Command Context
+            var context = new CommandContext(client, message);
             // Execute the Command, store the result
             var result = await commands.ExecuteAsync(context, argPos, map);
 
@@ -49,9 +46,9 @@ namespace DiscordBot.NET_Core
                 await google.Google(message);
             }
 
-            // If the command failed, notify the user
-            else if(!result.IsSuccess)
-                await message.Channel.SendMessageAsync($"**흐앙!**:sob: {result.ErrorReason}");
+            // If the command failed, notify the user 오류 메세지 출력.
+            //             else if(!result.IsSuccess)
+            //                 await message.Channel.SendMessageAsync($"**흐앙!**:sob: {result.ErrorReason}");
         }
     }
 }

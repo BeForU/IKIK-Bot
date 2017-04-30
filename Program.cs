@@ -26,10 +26,10 @@ namespace DiscordBot.NET_Core
              => Task.Run(()
              => Console.WriteLine($"[{l.Severity}] {l.Source}: {l.Exception?.ToString() ?? l.Message}"));
 
-            // Place the token of your bot account here
-            string token = "TOKEN HERE";
+			// Place the token of your bot account here
+			string token = System.IO.File.ReadAllText("token.txt");
 
-            handler = new CommandHandler();
+			handler = new CommandHandler();
             await handler.Install(client);
 
             // Configure the client to use a Bot token, and use our token

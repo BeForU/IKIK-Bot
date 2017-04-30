@@ -53,7 +53,7 @@ namespace DiscordBot.NET_Core
                 $"- 사용한 라이브러리: Discord.Net ({DiscordConfig.Version})\n" +
                 $"- 런타임: {RuntimeInformation.FrameworkDescription} {RuntimeInformation.OSArchitecture}\n" +
                 $"- 돌아간 시간: {GetUptime()}\n" +
-				$"- 잌잌봇 버전 : 2.3\n\n"
+				$"- 잌잌봇 버전 : 2.4\n\n"
 			};
             await ReplyAsync("", false, embed);
 
