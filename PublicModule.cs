@@ -40,7 +40,7 @@ namespace DiscordBot.NET_Core
 		//         }
 
 		[Command("info")]
-        [Alias("정보", "information")]
+        [Alias("정보", "information", "wjdqh")]
         public async Task Info()
         {
             var application = await Context.Client.GetApplicationInfoAsync();
@@ -53,7 +53,8 @@ namespace DiscordBot.NET_Core
                 $"- 사용한 라이브러리: Discord.Net ({DiscordConfig.Version})\n" +
                 $"- 런타임: {RuntimeInformation.FrameworkDescription} {RuntimeInformation.OSArchitecture}\n" +
                 $"- 돌아간 시간: {GetUptime()}\n" +
-				$"- 잌잌봇 버전 : 2.4\n\n"
+				$"- 잌잌봇 버전 : 3.0\n" +
+				$"- 소스 코드 : https://github.com/BeForU/IKIK-Bot\n"
 			};
             await ReplyAsync("", false, embed);
 
@@ -71,42 +72,24 @@ namespace DiscordBot.NET_Core
         }
 
         [Command("help")]
-        [Alias("도움", "도움말", "도움!")]
+        [Alias("도움", "도움말", "도움!", "ehdna")]
         [Summary("Display helps")]
         public async Task DisplayHelp()
         {
             EmbedBuilder embed = new EmbedBuilder()
             {
                 Color = new Color(0, 122, 204),
-                Title = "기능 명령어 보여드릴게요!",
+                Title = "도움말이에요!",
                 Description = "```" +
                 "!now    !지금     현재시간 출력\n" +
                 "!utc    !표준시   국제 표준시 출력\n" +
                 "!info   !정보     봇 정보를 보여드릴게요\n" +
                 "!help   !도움     지금 이거에요!!\n" +
-                "!alias  !명령어   같은 기능의 다른 명령어 목록을 띄워요!\n" +
-                "!google !구글 \"검색어\"   구글을 검색할 거에요! 두개까지만!" +
-                "```"
-            };
-
-            await ReplyAsync("", false, embed);
-
-            embed = new EmbedBuilder()
-            {
-                Color = new Color(0, 122, 204),
-                Title = "유튜브 링크 명령어 보여드릴게요!",
-                Description = "```" +
-                "!캔젤럽, !candyjellylove, ...\n" +
-                "      러블리즈 - Candy Jelly Love\n" +
-                "!wow, !와우\n" +
-                "      러블리즈 - WoW!\n" +
-                "!ndk, !nodoka, !노도카\n" +
-                "      마나베 노도카 - 햇살이 비치는 Living\n" +
-                "!nana, !usaming, !미미밍\n" +
-                "      아베 나나 - 메르헨 데뷔!\n" +
-                "!fumika, !brightblue, !문과만세\n" +
-                "      사기사와 후미카 - Bright Blue" +
-                "```"
+                "!alias  !명령어\n  같은 기능의 다른 명령어 목록을 띄워요!\n" +
+				"!google !구글 \"검색어\"\n  구글에서 검색할 거에요! 최대 두 개 까지!\n" +
+				"!youtube !유튜브 \"검색어\"\n  유튜브에서 검색할거에요! 최대 세 개 까지!" +
+                "```" +
+				"\n\"!명령어\" 라고 입력하면 좀 더 보실 수 있어요!"
             };
 
             await ReplyAsync("", false, embed);
@@ -123,28 +106,20 @@ namespace DiscordBot.NET_Core
                 Color = new Color(0, 122, 204),
                 Title = "같은 기능의 명령어들을 보여드릴게요!",
                 Description = "```" +
-                "!now    => !지금, !시간, !time\n" +
-                "!utc    => !표준시, !유티씨\n" +
-                "!info   => !정보, !information\n" +
-                "!help   => !도움, !도움말, !도움!\n" +
+                "!now    => !지금, !시간, !time, !wlrma, !tlrks\n" +
+                "!utc    => !표준시, !유티씨, !vywnstl\n" +
+                "!info   => !정보, !information, !wjdqh\n" +
+				"!help   => !도움, !도움말, !도움!, !ehdna\n" +
                 "!alias  => !명령어, !다른거,\n" +
-                "!google => !구글, \n" +
-                "-----------------------------------------------------\n" +
-                "!wow    => !와우, !와우!, !wow!\n" +
-                "!cjl    => !candyjellylove, !캔디젤리러브, !캔디젤리럽,\n" +
-                "           !캔젤럽, !캔디 젤리 러브\n" +
-                "!ndk    => !nodoka, !노도카, !마나베 노도카\n" +
-                "!nana   => !usaming, !우사밍, !나나, !아베 나나,\n" +
-                "           !미미밍, !미미밍!, !mimiming, !mimiming!\n" +
-                "!fumika => !brightblue, !후미카, !사기사와 후미카,\n" +
-                "           !문과, !문과 만세!, !문과만세, !문과 만세\n" +
-                "```"
+                "!google => !구글, !rnrmf\n" +
+                "!youtube => !유튜브, !유튭, !dbxbqm\n" +
+				"```"
             };
             await ReplyAsync("", false, embed);
         }
 
         [Command("now")]
-        [Alias("지금", "시간", "time")]
+        [Alias("지금", "시간", "time", "wlrma", "tlrks")]
         [Summary("Display time")]
         public async Task Now()
         {
@@ -159,53 +134,11 @@ namespace DiscordBot.NET_Core
         }
 
         [Command("utc")]
-        [Alias("표준시", "유티씨")]
+        [Alias("표준시", "유티씨", "vywnstl")]
         [Summary("Display UTC time")]
         public async Task UTC()
         {
             await ReplyAsync(DateTime.UtcNow.ToString());
-        }
-
-        // 이하 유튜브 링크 출력. 데이터 파일로 관리하면 좋겠지만...
-
-        [Command("wow")]
-        [Alias("wow!", "와우", "와우!")]
-        [Summary("WoW!")]
-        public async Task WoW()
-        {
-            await ReplyAsync("https://www.youtube.com/watch?v=a1ENnG-s630");
-        }
-
-        [Command("cjl")]
-        [Alias("candyjellylove", "캔디젤리러브", "캔디젤리럽", "캔젤럽", "캔디 젤리 러브")]
-        [Summary("Candy~ Jelly~ Love!")]
-        public async Task CandyJellyLove()
-        {
-            await ReplyAsync("https://www.youtube.com/watch?v=HRQEs4vOIrY");
-        }
-
-        [Command("ndk")]
-        [Alias("nodoka", "노도카", "마나베 노도카")]
-        [Summary("Nodoka Character Song")]
-        public async Task Nodoka()
-        {
-            await ReplyAsync("https://www.youtube.com/watch?v=Gf_MV1Vx08o");
-        }
-
-        [Command("nana")]
-        [Alias("usaming", "우사밍", "나나", "아베 나나", "미미밍", "미미밍!","mimiming","mimiming!")]
-        [Summary("Mi-Mi-Ming!x2 Usaming!")]
-        public async Task Nana()
-        {
-            await ReplyAsync("https://www.youtube.com/watch?v=1Rm9O_UvBWE");
-        }
-
-        [Command("fumika")]
-        [Alias("brightblue", "후미카", "사기사와 후미카", "문과", "문과 만세!", "문과만세", "문과 만세")]
-        [Summary("문과 만세!!!")]
-        public async Task Fumika()
-        {
-            await ReplyAsync("https://www.youtube.com/watch?v=acPzzC8SPL4");
         }
 
         private static string GetUptime()

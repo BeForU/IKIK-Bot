@@ -9,7 +9,6 @@ namespace DiscordBot.NET_Core
     {
         private CommandService commands;
         private DiscordSocketClient client;
-        private IDependencyMap map;
         private GoogleCrawler google;
 
         public async Task Install(DiscordSocketClient c)
@@ -38,12 +37,23 @@ namespace DiscordBot.NET_Core
             // Create a Command Context
             var context = new CommandContext(client, message);
             // Execute the Command, store the result
-            var result = await commands.ExecuteAsync(context, argPos, map);
+            var result = await commands.ExecuteAsync(context, argPos);
 
-            if (message.Content.StartsWith("!google") || message.Content.StartsWith("!구글"))
+            if (message.Content.StartsWith("!google", System.StringComparison.OrdinalIgnoreCase)
+				|| message.Content.StartsWith("!rnrmf", System.StringComparison.OrdinalIgnoreCase)
+				|| message.Content.StartsWith("!구글"))
             {
                 GoogleCrawler google = new GoogleCrawler();
                 await google.Google(message);
+            }
+
+            if (message.Content.StartsWith("!youtube", System.StringComparison.OrdinalIgnoreCase)
+				|| message.Content.StartsWith("!dbxbqm", System.StringComparison.OrdinalIgnoreCase)
+				|| message.Content.StartsWith("!유튭")
+				|| message.Content.StartsWith("!유튜브"))
+            {
+                YoutubeSearcher youtube = new YoutubeSearcher();
+                await youtube.Youtube(message);
             }
 
             // If the command failed, notify the user 오류 메세지 출력.
