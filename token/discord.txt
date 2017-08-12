@@ -1,0 +1,1 @@
+Input your Discord Bot API Token here without multilines.
