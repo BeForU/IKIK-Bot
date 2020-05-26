@@ -24,7 +24,7 @@ namespace DiscordBot.NET_Core
 			{
 				if (keyword.Length < 9)
 				{
-					await message.Channel.SendMessageAsync("어라라라...? 검색어가 없네요?! \"!youtube 검색어\" 방식으로 써 주세요!");
+					await message.Channel.SendMessageAsync("검색어가 없네요?! \"!youtube 검색어\" 방식으로 써 주세요!");
 					return;
 				}
 
@@ -34,7 +34,7 @@ namespace DiscordBot.NET_Core
 			{
 				if (keyword.Length < 8)
 				{
-					await message.Channel.SendMessageAsync("어라라라...? 검색어가 없네요?! \"!유튜브 검색어\" 방식으로 써 주세요!");
+					await message.Channel.SendMessageAsync("검색어가 없네요?! \"!유튜브 검색어\" 방식으로 써 주세요!");
 					return;
 				}
 
@@ -44,21 +44,11 @@ namespace DiscordBot.NET_Core
 			{
 				if (keyword.Length < 5)
 				{
-					await message.Channel.SendMessageAsync("어라라라...? 검색어가 없네요?! \"!유튜브 검색어\" 방식으로 써 주세요!");
+					await message.Channel.SendMessageAsync("검색어가 없네요?! \"!유튜브 검색어\" 방식으로 써 주세요!");
 					return;
 				}
 
 				keyword = message.Content.Substring(5);
-			}
-			else if (message.Content.StartsWith("!유튭"))
-			{
-				if (keyword.Length < 4)
-				{
-					await message.Channel.SendMessageAsync("어라라라...? 검색어가 없네요?! \"!유튭 검색어\" 방식으로 써 주세요!");
-					return;
-				}
-
-				keyword = message.Content.Substring(4);
 			}
 
 			//Console.WriteLine("Youtube Search");
@@ -83,7 +73,7 @@ namespace DiscordBot.NET_Core
 			}
 			else
 			{
-				await message.Channel.SendMessageAsync("세상에 유튜브에 검색 결과가 안나와요! 헐! 대박!");
+				await message.Channel.SendMessageAsync("유튜브에 검색 결과가 안나와요! 헐!");
 			}
 
 			if (searchResponse.Items.Count > 1)

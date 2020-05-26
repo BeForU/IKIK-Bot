@@ -23,7 +23,7 @@ namespace DiscordBot.NET_Core
 			{
 				if (keyword.Length < 8)
 				{
-					await message.Channel.SendMessageAsync("어라라라...? 검색어가 없네요?! \"!google 검색어\" 방식으로 써 주세요!");
+					await message.Channel.SendMessageAsync("검색어가 없네요?! \"!google 검색어\" 방식으로 써 주세요!");
 					return;
 				}
 
@@ -33,7 +33,7 @@ namespace DiscordBot.NET_Core
 			{
 				if (keyword.Length < 7)
 				{
-					await message.Channel.SendMessageAsync("어라라라...? 검색어가 없네요?! \"!구글 검색어\" 방식으로 써 주세요!");
+					await message.Channel.SendMessageAsync("검색어가 없네요?! \"!구글 검색어\" 방식으로 써 주세요!");
 					return;
 				}
 
@@ -43,7 +43,7 @@ namespace DiscordBot.NET_Core
 			{
 				if (keyword.Length < 4)
 				{
-					await message.Channel.SendMessageAsync("어라라라...? 검색어가 없네요?! \"!구글 검색어\" 방식으로 써 주세요!");
+					await message.Channel.SendMessageAsync("검색어가 없네요?! \"!구글 검색어\" 방식으로 써 주세요!");
 					return;
 				}
 
