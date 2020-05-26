@@ -75,7 +75,7 @@ namespace DiscordBot.NET_Core
 			//Console.WriteLine(str);
 
 			//제목 추출
-			regex = new Regex("event(.)\">[^<](.*?)</a>");
+			regex = new Regex("(?<=DKV0Md..)(.*?)(?=</h3)");
 			var titles = regex.Matches(str).Cast<Match>().ToList();
 
 			for (int i = 0; i < titles.Count; i++)
@@ -87,7 +87,7 @@ namespace DiscordBot.NET_Core
 			}
 
 			//링크 추출
-			regex = new Regex("<a href=\"(.*?)\" onmousedown=\"");
+			regex = new Regex("(?<=href=\")(.*?)(?=\" onmousedown)");
 			var linkes = regex.Matches(str).Cast<Match>().ToList();
 
 			for (int i = 0; i < linkes.Count; i++)
@@ -116,12 +116,10 @@ namespace DiscordBot.NET_Core
 				embed.Color = new Color(0, 150, 207);
 
 				str = titles[i].Value;
-				str = str.Substring(8, str.Length - 12);
 				str = WebUtility.HtmlDecode(str);
 				embed.Title = str;
 
 				str = linkes[i].Value;
-				str = str.Substring(9, str.Length - 24);
 				str = WebUtility.HtmlDecode(str);
 				embed.Url = str;
 

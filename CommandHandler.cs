@@ -58,7 +58,7 @@ namespace DiscordBot.NET_Core
 
             // If the command failed, notify the user 오류 메세지 출력.
             //             else if(!result.IsSuccess)
-            //                 await message.Channel.SendMessageAsync($"**흐앙!**:sob: {result.ErrorReason}");
+            //                 await message.Channel.SendMessageAsync($":sob: {result.ErrorReason}");
         }
     }
 }
